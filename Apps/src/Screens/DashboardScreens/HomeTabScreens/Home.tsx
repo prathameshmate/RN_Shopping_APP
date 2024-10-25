@@ -2,6 +2,7 @@ import {View, Text, BackHandler, Alert} from 'react-native';
 import React, {useEffect} from 'react';
 
 const Home = () => {
+  console.log('hiii :>>');
   //BackHandler in Android
   useEffect(() => {
     BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
