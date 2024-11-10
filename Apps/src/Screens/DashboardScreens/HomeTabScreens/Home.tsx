@@ -1,17 +1,20 @@
 import {View, Text, BackHandler, Alert} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 
 const Home = () => {
-  //BackHandler in Android
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+  // //BackHandler in Android
+  useFocusEffect(
+    useCallback(() => {
+      BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
 
-    return () =>
-      BackHandler.removeEventListener(
-        'hardwareBackPress',
-        handleBackButtonClick,
-      );
-  }, []);
+      return () =>
+        BackHandler.removeEventListener(
+          'hardwareBackPress',
+          handleBackButtonClick,
+        );
+    }, []),
+  );
 
   const handleBackButtonClick = () => {
     Alert.alert('', 'Are you want to exit App?', [
